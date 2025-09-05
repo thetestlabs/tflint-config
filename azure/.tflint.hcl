@@ -1,6 +1,9 @@
 # tflint configuration
+# github.com/terraform-linters/tflint
 
 config {
+  # Enable lint checks against Terraform Modules
+  module = true
   # Disables forcing a 0 return code on finding errors
   force  = false
   # Use the 'compact' output format; integrates with GitHub to map problems to line references
@@ -80,10 +83,9 @@ rule "terraform_unused_required_providers" {
 }
 
 
-# Enables the AWS plugin to perform AWS specific checks
-# Should be removed if AWS is not being used
-plugin "aws" {
-  enabled = true
-  version = "0.37.0"
-  source  = "github.com/terraform-linters/tflint-ruleset-aws"
+# Enables the Azure plugin to perform checks on Azure specific resources
+plugin "azurerm" {
+    enabled = true
+    version = "0.29.0"
+    source  = "github.com/terraform-linters/tflint-ruleset-azurerm"
 }
